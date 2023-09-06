@@ -1,9 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
 
-from classes.Article import Article
-from db.ArticleService import ArticleService
-
 
 class Scraper:
 
@@ -43,14 +40,13 @@ class Scraper:
     }
 
     @classmethod
-    def scrape_br(cls, team: str = 'bears', limit: int = 10) -> list[Article]:
-        parsed_articles: list[Article] = []
+    def scrape_br(cls, team: str = 'bears', limit: int = 10) -> list[dict]:
+        parsed_articles: list[dict] = []
         team = team.title()
         full_team_name = cls.BR_NFL_TEAMS[team]
         br_url = f'https://bleacherreport.com/{full_team_name}'
         response = requests.get(br_url)
         html_content = response.content
-
         soup = BeautifulSoup(html_content, 'html.parser')
         br_articles = soup.find_all('li', class_='articleSummary', limit=limit)
 
@@ -62,9 +58,20 @@ class Scraper:
             if summary:
                 summary = summary.text
 
-            article_parsed = Article(team, headline, link, image, summary)
-            parsed_articles.append(article_parsed)
+            article = {
+                'headline': headline,
+                'link': link,
+                'image': image,
+                'summary': summary,
+                'team_name': team
+            }
+
+            parsed_articles.append(article)
 
         print(f'Successfully scraped {len(parsed_articles)} {team} articles.') if parsed_articles\
             else print(f'No articles scraped for {team}')
         return parsed_articles
+
+
+if __name__ == "__main__":
+    print(Scraper.scrape_br())
