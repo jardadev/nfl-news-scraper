@@ -4,6 +4,41 @@ TABLE = 'Articles'
 
 
 class Article:
+    """
+    Represents a NFL news article scraped and stored in a database.
+
+    This class provides methods to interact with articles in the database, including
+    retrieving, saving, removing, and filtering articles.
+
+    Attributes:
+        team_name (str): The name of the NFL team associated with the article.
+        headline (str): The headline or title of the article.
+        link (str): The URL link to the full article.
+        image (str): The URL link to the article's associated image.
+        summary (str): A brief summary or excerpt from the article.
+
+    Methods:
+        get_all(cls) -> list[Article]:
+            Retrieve all articles from the database.
+
+        get_one(cls, article_id: int) -> Article:
+            Retrieve a single article from the database by its ID.
+
+        get_by_team(cls, team: str) -> list[Article]:
+            Retrieve articles by the team they belong to.
+
+        get_by_column(cls, column: str) -> list[Article]:
+            Retrieve articles based on a specific column name.
+
+        save(cls, article_list: list | dict[str, str | int]) -> list[dict[str, str | int]]:
+            Save articles to the database, avoiding duplicates.
+
+        remove_duplicate_articles(cls, articles: list) -> list:
+            Remove duplicate articles from a list of articles.
+
+        remove(cls, article_id: int):
+            Remove an article from the database by its ID.
+    """
 
     def __init__(self, data: dict):
         self.team_name = data['team_name']
