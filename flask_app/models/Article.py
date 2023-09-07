@@ -1,4 +1,4 @@
-from db.supa_config import supa
+from flask_app.config.supa_config import supa
 
 TABLE = 'Articles'
 
