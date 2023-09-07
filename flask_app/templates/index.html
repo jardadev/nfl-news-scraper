@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Home</title>
+	</head>
+	<body>
+		<h1>NFL News</h1>
+		<ul class="article-list">
+			{% for a in articles %}
+			<li><a href="{{ a.link }}">{{ a.headline }}</a></li>
+			{% endfor %}
+		</ul>
+	</body>
+</html>
