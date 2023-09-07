@@ -124,7 +124,7 @@ class Article:
         return articles
 
     @classmethod
-    def save(cls, article_list: list | dict[str, str | int]) -> list[dict[str, str | int]]:
+    def save(cls, article_list: list[dict]) -> list[dict]:
         """
         Save articles to the database, avoiding duplicates.
 
@@ -132,7 +132,7 @@ class Article:
                 article_list (list | dict[str, str | int]): A list of article dictionaries or a single article dictionary.
 
             Returns:
-                list[dict[str, str | int]]: A list of dictionaries representing the saved articles' data.
+                list[dict]: A list of dictionaries representing the saved articles' data.
         """
         filtered_articles = cls.remove_duplicate_articles(article_list)
         data, count = supa.table(TABLE).insert(filtered_articles).execute()
