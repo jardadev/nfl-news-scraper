@@ -3,8 +3,30 @@ import requests
 
 
 class Scraper:
+    """
+    A class for scraping NFL news articles from Bleacher Report by team using BeautifulSoup.
 
+    This class provides methods to scrape and parse NFL news articles from Bleacher Report for
+    a specified NFL team. It allows you to retrieve headlines, links, images, summaries, and
+    the team name for each article.
+
+        Class Attributes:
+            BR_NFL_TEAMS (dict): A mapping of NFL team names to their corresponding Bleacher Report URLs.
+
+        Methods:
+            scrape_br(cls, team: str = 'bears', limit: int = 10) -> list[dict]:
+                Scrapes NFL news articles for a specified team.
+
+                Args:
+                    team (str, optional): The name of the NFL team. Defaults to 'bears'.
+                    limit (int, optional): The maximum number of articles to scrape. Defaults to 10.
+
+                Returns:
+                    list[dict]: A list of dictionaries containing scraped article data.
+    """
     BR_NFL_TEAMS = {
+        # A mapping of NFL team names to their corresponding Bleacher Report URLs.
+        # (This dictionary defines the available teams and their URLs.)
         "49ers": "san-francisco-49ers",
         "Bears": "chicago-bears",
         "Bengals": "cincinnati-bengals",
@@ -41,6 +63,16 @@ class Scraper:
 
     @classmethod
     def scrape_br(cls, team: str = 'bears', limit: int = 10) -> list[dict]:
+        """
+        Scrapes NFL news articles for a specified team from Bleacher Report.
+
+            Args:
+                team (str, optional): The name of the NFL team. Defaults to 'bears'.
+                limit (int, optional): The maximum number of articles to scrape. Defaults to 10.
+
+            Returns:
+                list[dict]: A list of dictionaries containing scraped article data.
+        """
         parsed_articles: list[dict] = []
         team = team.title()
         full_team_name = cls.BR_NFL_TEAMS[team]
