@@ -82,7 +82,7 @@ class Scraper:
         soup = BeautifulSoup(html_content, 'html.parser')
         br_articles = soup.find_all('li', class_='articleSummary', limit=limit)
 
-        # Logic for extracting news articles from Bleacher Report
+        # Logic for extracting news articles from Bleacher Report html
         for br_article in br_articles:
             headline = br_article.find('h3').text
             link = br_article.find('div', class_='articleMedia').a['href']
