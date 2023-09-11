@@ -95,10 +95,7 @@ class Article:
         team = team.title()
         query_results = supa.table(TABLE).select(
             '*').eq('team_name', team).execute()
-        articles = []
-
-        for article in query_results.data:
-            articles.append(cls(article))
+        articles = [query_results.data]
 
         return articles
 
@@ -134,13 +131,13 @@ class Article:
             Returns:
                 list[dict]: A list of dictionaries representing the saved articles' data.
         """
-        filtered_articles = cls.remove_duplicate_articles(article_list)
+        filtered_articles = cls.__remove_duplicate_articles(article_list)
         data, count = supa.table(TABLE).insert(filtered_articles).execute()
 
         return data
 
     @classmethod
-    def remove_duplicate_articles(cls, articles: list) -> list:
+    def __remove_duplicate_articles(cls, articles: list) -> list:
         """
         Remove duplicate articles from a list of articles.
 
