@@ -118,6 +118,20 @@ class Article:
         return articles
 
     @classmethod
+    def get_team_names(cls):
+        query_results = supa.table(TABLE).select('team_name').execute()
+        team_names = set()
+        teams_dict = {}
+
+        for team in query_results.data:
+            team_names.add(team['team_name'])
+
+        for index, team in enumerate(team_names):
+            teams_dict[index] = team
+
+        return teams_dict
+
+    @classmethod
     def save(cls, article_list: list[dict]) -> list[dict]:
         """
         Save articles to the database, avoiding duplicates.
