@@ -35,8 +35,7 @@ export default function Home({ articles }) {
 }
 
 export async function getStaticProps() {
-	const res = await fetch('http://127.0.0.1:3000/api');
-	const obj = await res.json();
-	const articles = obj[0];
+	const res = await fetch('http://127.0.0.1:3000/api/');
+	const articles = await res.json();
 	return { props: { articles } };
 }
