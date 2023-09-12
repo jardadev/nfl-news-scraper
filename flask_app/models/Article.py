@@ -56,10 +56,7 @@ class Article:
                 list[object]: A list of Article objects representing all articles in the database.
         """
         query_results = supa.table(TABLE).select('*').execute()
-        articles = []
-
-        for a in query_results.data:
-            articles.append(cls(a))
+        articles = [query_results.data]
 
         return articles
 
@@ -77,7 +74,7 @@ class Article:
         query_results = supa.table(TABLE).select(
             '*').eq('id', article_id).execute()
         articles = query_results.data
-        article = cls(articles[0])
+        article = articles[0]
 
         return article
 
