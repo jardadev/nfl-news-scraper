@@ -1,11 +1,10 @@
-from flask import render_template, redirect, jsonify
 from flask_app import app
 from flask_app.models.Article import Article
 from flask_app.helpers.scrape_save import scrape_save
 
 
 @app.route('/')
-def home():
+def get_all_articles():
     """
     Endpoint for the home page of the NFL News API.
 
@@ -15,8 +14,7 @@ def home():
         Returns:
             flask.Response: A rendered HTML page displaying the list of NFL news articles.
     """
-    response = Article.get_all()
-    return render_template('index.html', articles=response)
+    return Article.get_all()
 
 
 @app.route('/api/team/<team_name>')
