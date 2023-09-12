@@ -4,6 +4,7 @@ from flask_app.helpers.scrape_save import scrape_save
 
 
 @app.route('/')
+@app.route('/api')
 def get_all_articles():
     """
     Endpoint for the home page of the NFL News API.
