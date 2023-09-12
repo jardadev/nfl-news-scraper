@@ -7,10 +7,27 @@ export default function Home({ articles }) {
 			className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
 		>
 			<h1>NFL News Scraper</h1>
-			<ul>
+			<ul className='flex flex-col gap-3'>
 				{articles &&
-					articles.map((article) => (
-						<li key={article.id}>{article.headline}</li>
+					articles.map(({ headline, image, summary, link }, i) => (
+						<div
+							className='card lg:card-side bg-base-100 shadow-xl'
+							key={i}
+						>
+							<figure>
+								<img src={image} alt={headline} />
+							</figure>
+							<div className='card-body'>
+								<h2 className='card-title'>{headline}</h2>
+
+								{summary && <p>{summary}</p>}
+								<div className='card-actions justify-end'>
+									<a className='btn btn-primary' href={link}>
+										Read
+									</a>
+								</div>
+							</div>
+						</div>
 					))}
 			</ul>
 		</main>
