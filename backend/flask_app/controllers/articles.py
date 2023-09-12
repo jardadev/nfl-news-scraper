@@ -23,6 +23,11 @@ def get_team_news(team_name: str):
     return Article.get_by_team(team_name)
 
 
+@app.route('/api/teams')
+def get_team_names():
+    return Article.get_team_names()
+
+
 @app.route('/api/<int:article_id>')
 def show_article(article_id: int):
     return Article.get_one(article_id)
