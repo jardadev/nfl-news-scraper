@@ -34,6 +34,7 @@ def remove_article(article_id: int):
     return Article.remove(article_id)
 
 
-@app.route('/api/scrape/<team_name>')
-def scrape_articles_by_team(team_name: str):
-    return scrape_save(team=team_name)
+@app.route('/api/scrape/<team_name>/', defaults={'limit': 10})
+@app.route('/api/scrape/<team_name>/<int:limit>')
+def scrape_articles_by_team(team_name: str, limit: int):
+    return scrape_save(team=team_name, limit=limit)
