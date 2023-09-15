@@ -1,11 +1,11 @@
 import { Inter } from 'next/font/google';
+import Container from '@/components/ui/Container';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home({ articles }) {
 	return (
-		<main
-			className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-		>
+		<Container>
 			<h1>NFL News Scraper</h1>
 			<ul className='flex flex-col gap-3'>
 				{articles &&
@@ -30,7 +30,7 @@ export default function Home({ articles }) {
 						</div>
 					))}
 			</ul>
-		</main>
+		</Container>
 	);
 }
 
