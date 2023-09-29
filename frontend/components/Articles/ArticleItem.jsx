@@ -17,15 +17,15 @@ const ArticleImage = ({ url, alt }) => {
 
 const ArticleItem = ({ headline, image, summary, link }) => {
 	return (
-		<div className='card lg:card-side bg-base-100 shadow-xl'>
+		<div className='w-full card bg-base-100 shadow-xl max-w-lg h-1/6'>
 			<figure className='aspect-w-16 aspect-h-9'>
 				<ArticleImage url={image} alt={headline} />
 			</figure>
-			<div className='card-body'>
-				<h2 className='card-title'>{headline}</h2>
-				{summary && <p>{summary}</p>}
+			<div className='flex flex-col gap-3 p-3 '>
+				<h2 className='card-title font-bold text-2xl'>{headline}</h2>
+				{summary && <p className='text-neutral-500'>{summary}</p>}
 				<div className='card-actions justify-end'>
-					<a className='btn btn-primary' role='button' href={link}>
+					<a className='btn btn-secondary' role='button' href={link}>
 						Read
 					</a>
 				</div>
