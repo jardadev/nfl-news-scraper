@@ -5,8 +5,15 @@ module.exports = {
 		'./components/**/*.{js,ts,jsx,tsx,mdx}',
 		'./app/**/*.{js,ts,jsx,tsx,mdx}',
 	],
-	daisyui: {
-		themes: ['aqua'],
+	theme: {
+		fontFamily: {
+			sans: ['var(--font-chewy)', 'system-ui'],
+			serif: ['var(--font-yk)'],
+			mono: ['var(--font-khula)'],
+		},
 	},
-	plugins: [require('daisyui')],
+	daisyui: {
+		themes: ['cupcake'],
+	},
+	plugins: [require('daisyui'), require('@tailwindcss/aspect-ratio')],
 };
