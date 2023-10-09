@@ -1,36 +1,23 @@
-import { Inter } from 'next/font/google';
-const inter = Inter({ subsets: ['latin'] });
+
+import Container from '@/components/ui/Container';
+import ArticleItem from '@/components/Articles/ArticleItem';
 
 export default function TeamArticles({ articles }) {
 	return (
-		<main
-			className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-		>
-			<h1>NFL News Scraper</h1>
-			<ul className='flex flex-col gap-3'>
+		<Container>
+			<ul className='flex flex-col gap-3 items-center'>
 				{articles &&
 					articles.map(({ headline, image, summary, link }, i) => (
-						<div
-							className='card lg:card-side bg-base-100 shadow-xl'
+						<ArticleItem
 							key={i}
-						>
-							<figure>
-								<img src={image} alt={headline} />
-							</figure>
-							<div className='card-body'>
-								<h2 className='card-title'>{headline}</h2>
-
-								{summary && <p>{summary}</p>}
-								<div className='card-actions justify-end'>
-									<a className='btn btn-primary' href={link}>
-										Read
-									</a>
-								</div>
-							</div>
-						</div>
+							headline={headline}
+							image={image}
+							summary={summary}
+							link={link}
+						/>
 					))}
 			</ul>
-		</main>
+		</Container>
 	);
 }
 
