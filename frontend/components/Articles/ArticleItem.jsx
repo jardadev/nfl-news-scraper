@@ -25,7 +25,7 @@ const ArticleItem = ({ headline, image, summary, link }) => {
 				<h2 className='card-title font-bold text-2xl'>{headline}</h2>
 				{summary && <p className='text-neutral-500'>{summary}</p>}
 				<div className='card-actions justify-end'>
-					<a className='btn btn-secondary' role='button' href={link}>
+					<a className='btn' role='button' href={link}>
 						Read
 					</a>
 				</div>
