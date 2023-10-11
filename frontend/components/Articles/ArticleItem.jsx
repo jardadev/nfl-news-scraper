@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const ArticleImage = ({ url, alt }) => {
 	return (
@@ -18,8 +19,10 @@ const ArticleImage = ({ url, alt }) => {
 const ArticleItem = ({ headline, image, summary, link }) => {
 	return (
 		<div className='w-full card bg-base-100 shadow-xl max-w-lg h-1/6'>
-			<figure className='aspect-w-16 aspect-h-9'>
-				<ArticleImage url={image} alt={headline} />
+			<figure className='aspect-w-16 aspect-h-9 cursor-pointer'>
+				<Link href={link}>
+					<ArticleImage url={image} alt={headline} />
+				</Link>
 			</figure>
 			<div className='flex flex-col gap-3 p-3 '>
 				<h2 className='card-title font-bold text-2xl'>{headline}</h2>
