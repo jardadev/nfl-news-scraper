@@ -1,5 +1,3 @@
-export const cx = (...classNames) => classNames.filter(Boolean).join(' ');
-
 export const trimTeamName = (fullName) => {
 	const parts = fullName.split(' ');
 	if (parts.length > 1) {
