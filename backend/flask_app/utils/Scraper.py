@@ -74,7 +74,9 @@ class Scraper:
                 list[dict]: A list of dictionaries containing scraped article data.
         """
         parsed_articles: list[dict] = []
-        team = team.title()
+        if team != '49ers':
+            team = team.title()
+
         full_team_name = cls.BR_NFL_TEAMS[team]
         br_url = f'https://bleacherreport.com/{full_team_name}'
         response = requests.get(br_url)
