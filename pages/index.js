@@ -1,3 +1,5 @@
+import { supabase } from '@/supabase/config';
+
 import Container from '@/components/ui/Container';
 import ArticleItem from '@/components/Articles/ArticleItem';
 
@@ -20,8 +22,8 @@ export default function Home({ articles }) {
 	);
 }
 
-// export async function getStaticProps() {
-// 	const res = await fetch('http://127.0.0.1:3000/api/');
-// 	const articles = await res.json();
-// 	return { props: { articles } };
-// }
+export async function getStaticProps() {
+	const { data: articles, error } = await supabase.from('articles').select();
+
+	return { props: { articles } };
+}
