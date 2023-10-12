@@ -1,4 +1,4 @@
-# NFL Team Scraper with Next.js and TailwindCSS
+# NFL Team News Reader with Next.js and TailwindCSS
 
 ## Table of Contents
 
