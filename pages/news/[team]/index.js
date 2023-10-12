@@ -1,5 +1,7 @@
 import Container from '@/components/ui/Container';
 import ArticleItem from '@/components/Articles/ArticleItem';
+import NFL_TEAMS from '@/nfl-data';
+import { supabase } from '@/supabase/config';
 
 export default function TeamArticles({ articles }) {
 	const teamName = articles[0].team_name;
@@ -26,12 +28,12 @@ export default function TeamArticles({ articles }) {
 }
 
 export async function getStaticPaths() {
-	// Get all the homes IDs from the database
-	const res = await fetch('http://127.0.0.1:3000/api/teams');
-	const teams_dict = await res.json();
-	const teams = Object.values(teams_dict);
+	const nflTeamNamesFormatted = NFL_TEAMS.map((team) =>
+		team.name.replace(/.*\s/, '')
+	);
+
 	return {
-		paths: teams.map((team) => ({
+		paths: nflTeamNamesFormatted.map((team) => ({
 			params: { team: team.toLowerCase() },
 		})),
 		fallback: false, // returns 404 error page when trying to access an invalid record.
@@ -39,7 +41,15 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-	const res = await fetch(`http://127.0.0.1:3000/api/team/${params.team}`);
-	const articles = await res.json();
+	function toTitleCase(str) {
+		return str.replace(/\w\S*/g, function (txt) {
+			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+		});
+	}
+	const { data: articles, error } = await supabase
+		.from('articles')
+		.select()
+		.eq('team_name', toTitleCase(params.team));
+
 	return { props: { articles, team: params.team } };
 }

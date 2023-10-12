@@ -1,5 +1,5 @@
 import React from 'react';
-import NFL_TEAMS from '@/nfl-team-data/nfl-data';
+import NFL_TEAMS from '@/nfl-data';
 import Image from 'next/image';
 
 const TeamLogo = ({ teamName }) => {

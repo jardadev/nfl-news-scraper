@@ -1,5 +1,5 @@
 import TeamLogo from './TeamLogo';
-import NFL_TEAMS from '@/nfl-team-data/nfl-data';
+import NFL_TEAMS from '@/nfl-data';
 import Link from 'next/link';
 import { trimTeamName } from '@/utils/helpers';
 
@@ -16,9 +16,9 @@ const TeamNavList = () => {
 					</div>
 					<div className='ml-4 flex justify-center w-full xl:text-lg'>
 						<Link
-							href={`/news/${trimTeamName(
-								team.name
-							).toLowerCase()}`}
+							href={`/news/${team.name
+								.replace(/.*\s/, '')
+								.toLowerCase()}`}
 							className='hover:underline'
 						>
 							<p>{team.name}</p>
