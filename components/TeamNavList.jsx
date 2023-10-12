@@ -16,9 +16,9 @@ const TeamNavList = () => {
 					</div>
 					<div className='ml-4 flex justify-center w-full xl:text-lg'>
 						<Link
-							href={`/news/${trimTeamName(
-								team.name
-							).toLowerCase()}`}
+							href={`/news/${team.name
+								.replace(/.*\s/, '')
+								.toLowerCase()}`}
 							className='hover:underline'
 						>
 							<p>{team.name}</p>
