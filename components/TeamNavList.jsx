@@ -1,5 +1,5 @@
 import TeamLogo from './TeamLogo';
-import NFL_TEAMS from '@/nfl-team-data/nfl-data';
+import NFL_TEAMS from '@/nfl-data';
 import Link from 'next/link';
 import { trimTeamName } from '@/utils/helpers';
 
