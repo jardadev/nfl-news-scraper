@@ -3,7 +3,6 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"appdev": "concurrently \"npm:dev\" \"cd .. && cd backend/ && flask --app server run\"",
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
