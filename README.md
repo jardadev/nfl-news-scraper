@@ -14,7 +14,7 @@
 
 ## Project Overview
 
-In this project, I combine various technologies to create a web application that scrapes and displays articles on NFL teams. The backend Python script uses Beautiful Soup to scrape data from Bleacher Report, while the frontend is built with Next.js and styled using TailwindCSS. The data is stored and managed in a Supabase database, and the Supabase client is used to interact with the database on the frontend.
+In this project, various technologies are combined to create a web application that scrapes and displays articles on NFL teams. The backend Python script uses Beautiful Soup to scrape data from Bleacher Report, while the frontend is built with Next.js and styled using TailwindCSS. The data is stored and managed in a Supabase database, and the Supabase client is used to interact with the database on the frontend.
 
 ## Features
 
