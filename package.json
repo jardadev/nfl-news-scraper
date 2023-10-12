@@ -22,7 +22,6 @@
 		"theme-change": "^2.5.0"
 	},
 	"devDependencies": {
-		"concurrently": "^8.2.1",
 		"daisyui": "^3.7.3"
 	}
 }
