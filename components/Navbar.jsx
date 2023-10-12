@@ -1,6 +1,4 @@
 import Link from 'next/link';
-import { useEffect } from 'react';
-import { themeChange } from 'theme-change';
 import { BsSearch } from 'react-icons/bs';
 import TeamNavList from './TeamNavList';
 
