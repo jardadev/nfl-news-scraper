@@ -51,5 +51,9 @@ export async function getStaticProps({ params }) {
 		.select()
 		.eq('team_name', toTitleCase(params.team));
 
+	if (error) {
+		console.error(error);
+	}
+
 	return { props: { articles, team: params.team } };
 }
