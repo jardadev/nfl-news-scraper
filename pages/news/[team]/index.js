@@ -29,7 +29,7 @@ export default function TeamArticles({ articles }) {
 
 export async function getStaticPaths() {
 	const nflTeamNamesFormatted = NFL_TEAMS.map((team) =>
-		team.name.replace(/.*\s/, '')
+		team.name.replaceAll('', '-')
 	);
 
 	return {
