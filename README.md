@@ -1,4 +1,4 @@
-# NFL Team Scraper with Next.js and TailwindCSS
+# NFL Team News Reader with Next.js and TailwindCSS
 
 ## Table of Contents
 
@@ -32,7 +32,7 @@ In this project, various technologies are combined to create a web application t
 
 ## Live Demo
 
-You can check out the live demo of this project hosted on Vercel by following this URL: [Live Demo](https://your-vercel-app-url.com)
+You can check out the live demo of this project hosted on Vercel by following this URL: [Live Demo](https://nfl-news-reader.vercel.app)
 
 ## Contributing
 
