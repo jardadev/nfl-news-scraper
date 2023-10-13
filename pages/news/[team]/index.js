@@ -29,7 +29,7 @@ export default function TeamArticles({ articles }) {
 
 export async function getStaticPaths() {
 	const nflTeamNamesFormatted = NFL_TEAMS.map((team) =>
-		team.name.replaceAll('', '-')
+		team.name.replace(/.*\s/, '')
 	);
 
 	return {
@@ -41,19 +41,15 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-	// function toTitleCase(str) {
-	// 	return str.replace(/\w\S*/g, function (txt) {
-	// 		return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-	// 	});
-	// }
+	function toTitleCase(str) {
+		return str.replace(/\w\S*/g, function (txt) {
+			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+		});
+	}
 	const { data: articles, error } = await supabase
 		.from('articles')
 		.select()
-		.eq('team', params.team);
-
-	if (error) {
-		console.error(error);
-	}
+		.eq('team_name', toTitleCase(params.team));
 
 	return { props: { articles, team: params.team } };
 }
