@@ -1,13 +1,19 @@
 import { supabase } from '@/supabase/config';
 import Container from '@/components/ui/Container';
 import ArticleItem from '@/components/Articles/ArticleItem';
+import { useState } from 'react';
 
 export default function Home({ articles }) {
+	const [fetchedArticles, setFethedArticles] = useState(articles);
+	const [displayedArticles, setDisplayedArticles] = useState(
+		fetchedArticles.slice(0, 5)
+	);
+
 	return (
 		<Container>
 			<ul className='flex flex-col gap-3 items-center'>
 				{articles &&
-					articles.map(({ headline, image, summary, link }, i) => (
+					displayedArticles.map(({ headline, image, summary, link }, i) => (
 						<ArticleItem
 							key={i}
 							headline={headline}
@@ -26,7 +32,7 @@ export async function getStaticProps() {
 		.from('articles')
 		.select('headline, image, summary, link')
 		.order('created_at', { ascending: false })
-		.limit(20);
+		.limit(15);
 
 	return { props: { articles }, revalidate: 60 };
 }
