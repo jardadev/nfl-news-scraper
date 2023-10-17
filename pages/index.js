@@ -1,5 +1,6 @@
 import { supabase } from '@/supabase/config';
 
+
 import Container from '@/components/ui/Container';
 import ArticleItem from '@/components/Articles/ArticleItem';
 
@@ -23,7 +24,11 @@ export default function Home({ articles }) {
 }
 
 export async function getStaticProps() {
-	const { data: articles, error } = await supabase.from('articles').select();
+	const { data: articles, error } = await supabase
+		.from('articles')
+		.select('headline', 'image', 'summary', 'link')
+		.order('created_at', { ascending: false })
+		.limit(20);
 
 	return { props: { articles }, revalidate: 60 };
 }
