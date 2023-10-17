@@ -25,5 +25,5 @@ export default function Home({ articles }) {
 export async function getStaticProps() {
 	const { data: articles, error } = await supabase.from('articles').select();
 
-	return { props: { articles } };
+	return { props: { articles }, revalidate: 60 };
 }
