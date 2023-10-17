@@ -1,6 +1,4 @@
 import { supabase } from '@/supabase/config';
-
-
 import Container from '@/components/ui/Container';
 import ArticleItem from '@/components/Articles/ArticleItem';
 
@@ -15,7 +13,7 @@ export default function Home({ articles }) {
 							headline={headline}
 							image={image}
 							summary={summary}
-							link={link}
+							link={link || '/'}
 						/>
 					))}
 			</ul>
