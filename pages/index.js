@@ -13,7 +13,7 @@ export default function Home({ articles }) {
 							headline={headline}
 							image={image}
 							summary={summary}
-							link={link || '/'}
+							link={link}
 						/>
 					))}
 			</ul>
@@ -24,7 +24,7 @@ export default function Home({ articles }) {
 export async function getStaticProps() {
 	const { data: articles, error } = await supabase
 		.from('articles')
-		.select('headline', 'image', 'summary', 'link')
+		.select('headline, image, summary, link')
 		.order('created_at', { ascending: false })
 		.limit(20);
 
