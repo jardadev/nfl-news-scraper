@@ -1,5 +1,5 @@
 import { supabase } from '@/supabase/config';
-import Container from '@/components/ui/Container';
+import Container from '@/components/UI/Container';
 import ArticleList from '@/components/Articles/ArticleList';
 
 export default function Home({ articles }) {

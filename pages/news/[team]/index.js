@@ -1,4 +1,4 @@
-import Container from '@/components/ui/Container';
+import Container from '@/components/UI/Container';
 import ArticleItem from '@/components/Articles/ArticleItem';
 import NFL_TEAMS from '@/nfl-data';
 import { supabase } from '@/supabase/config';
