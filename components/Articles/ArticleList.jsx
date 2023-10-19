@@ -17,6 +17,7 @@ const ArticleList = (props) => {
 					image={image}
 					summary={summary}
 					link={link}
+					priority={i === 0 || i === 1}
 				/>
 			))}
 		</ul>

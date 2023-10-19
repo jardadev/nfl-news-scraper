@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const ArticleImage = ({ url, alt }) => {
+const ArticleImage = ({ url, alt, priority }) => {
 	return (
 		<Image
 			src={url}
@@ -12,16 +12,21 @@ const ArticleImage = ({ url, alt }) => {
 			style={{
 				objectFit: 'fill',
 			}}
+			priority={priority}
 		/>
 	);
 };
 
-const ArticleItem = ({ headline, image, summary, link }) => {
+const ArticleItem = ({ headline, image, summary, link, priority = false }) => {
 	return (
 		<div className='w-full card bg-base-100 shadow-xl max-w-lg h-1/6'>
 			<figure className='aspect-w-16 aspect-h-9 cursor-pointer'>
 				<Link href={link}>
-					<ArticleImage url={image} alt={headline} />
+					<ArticleImage
+						url={image}
+						alt={headline}
+						priority={priority}
+					/>
 				</Link>
 			</figure>
 			<div className='flex flex-col gap-3 p-3 '>
